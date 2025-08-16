@@ -8,6 +8,7 @@ with DAG(
     dag_id="alt_churn",
     start_date=pendulum.datetime(2023, 1, 1, tz="UTC"),
     schedule="@once",
+    tags=["ETL_2"],
     on_success_callback=send_telegram_success_message,
     on_failure_callback=send_telegram_failure_message,
 ) as dag:

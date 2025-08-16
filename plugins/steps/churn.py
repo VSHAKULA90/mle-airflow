@@ -4,11 +4,11 @@ import pandas as pd
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 
 def create_table(**kwargs):
-    
+    import sqlalchemy
     from sqlalchemy import Table, MetaData, Column, Integer, String, Float, DateTime, UniqueConstraint, inspect
     
     hook = PostgresHook('destination_db')
-    engine = hook.get_conn()
+    engine = hook.get_sqlalchemy_engine()
     metadata = MetaData()
     
     alt_users_churn = Table(
